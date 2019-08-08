@@ -1,0 +1,73 @@
+config:
+subcomponents:
+  prometheus-operator:
+    namespace: prometheus
+    injectNamespace: true
+    config:
+      # Depending on which DNS solution you have installed in your cluster enable the right exporter
+      coreDns:
+        enabled: true
+      kubeDns:
+        enabled: false
+
+      alertmanager:
+        alertmanagerSpec:
+          logLevel: "debug"
+          storage:
+            volumeClaimTemplate:
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                resources:
+                  requests:
+                    storage: 10Gi
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - "alertmanager-space-westus2.xiaodong.cloud"
+          tls:
+            - secretName: "sslcert-dev-xiaodong-cloud"
+              hosts:
+                - "alertmanager-space-westus2.xiaodong.cloud"
+
+      prometheus:
+        prometheusSpec:
+          storageSpec:
+            volumeClaimTemplate:
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                resources:
+                  requests:
+                    storage: 10Gi
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - "prometheus-space-westus2.xiaodong.cloud"
+          tls:
+            - secretName: "sslcert-dev-xiaodong-cloud"
+              hosts:
+                - "prometheus-space-westus2.xiaodong.cloud"
+
+      grafana:
+        adminUser: "admin"
+        adminPassword: "grafana"
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - "grafana-space-westus2.xiaodong.cloud"
+          tls:
+            - secretName: "sslcert-dev-xiaodong-cloud"
+              hosts:
+                - "grafana-space-westus2.xiaodong.cloud"
+        persistence:
+          enabled: true
+          accessModes: ["ReadWriteOnce"]
+          size: 10Gi
