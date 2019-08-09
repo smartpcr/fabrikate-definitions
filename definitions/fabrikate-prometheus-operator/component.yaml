@@ -8,7 +8,7 @@ hooks:
   after-install:
     - echo 'installed prometheus-operator'
 subcomponents:
-  - name: "prometheus-operator"
+  - name: "prometheus-grafana-alertmanater"
     generator: helm # Deprecated in fabrikate v1.0.0
     type: helm # Replaces `generator` in fabrikate v1.0.0
     source: "https://github.com/helm/charts"
