@@ -2,21 +2,11 @@ acr:
   name: oneesdevacr
 dns:
   domain: "1es.io"
+  sslCert: sslcert-dev-xiaodong-world
   resourceGroup: compes-bedrock-lab
   image:
-    name: 1es/external-dns
+    name: "1es/external-dns"
     tag: 638873
 aks:
   clusterName: compes-bedrock-lab
   location: westus2
-image:
-  repository: oneesdevacr.azurecr.io
-  name: 1es/product-catalog-api
-  tag: latest
-env:
-  ASPNETCORE_ENVIRONMENT: Development
-  tenant: onees-dev
-  role: product-catalog-api
-dns:
-  domain: xiaodong.world
-  sslCert: sslcert-dev-xiaodong-world
