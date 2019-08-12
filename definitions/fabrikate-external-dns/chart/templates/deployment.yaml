@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: external-dns
+  namespace: {{.Release.Namespace}}
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: external-dns
+    spec:
+      serviceAccountName: external-dns
+      containers:
+        - name: external-dns
+          image: "{{.Values.acr.name}}.azurecr.io/{{.Values.dns.image.name}}:{{.Values.dns.image.tag}}"
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "25Mi"
+            limits:
+              cpu: "100m"
+              memory: "100Mi"
+          args:
+            - --source=service
+            - --source=ingress
+            - --domain-filter={{.Values.dns.domain}}
+            - --provider=azure
+            - --azure-resource-group={{.Values.dns.resourceGroup}}
+            - --txt-owner-id={{.Values.aks.clusterName}}-{{.Values.aks.location}}
+            - --log-level=debug
+            - --policy=sync
+          volumeMounts:
+          - name: azure-config-file
+            mountPath: /etc/kubernetes
+            readOnly: true
+
+      imagePullSecrets:
+        - name: acr-auth
+
+      volumes:
+        - name: azure-config-file
+          secret:
+            secretName: external-dns-config-file
