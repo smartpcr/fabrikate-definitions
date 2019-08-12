@@ -37,7 +37,7 @@ spec:
             readOnly: true
 
       imagePullSecrets:
-        - name: acr-auth
+        - name: {{.Values.imagePullSecrets}}
 
       volumes:
         - name: azure-config-file

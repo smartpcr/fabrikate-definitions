@@ -10,3 +10,4 @@ dns:
 aks:
   clusterName: compes-bedrock-lab
   location: westus2
+imagePullSecrets: acr-auth
