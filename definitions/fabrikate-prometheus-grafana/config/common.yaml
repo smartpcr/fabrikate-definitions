@@ -678,11 +678,11 @@ subcomponents:
                     severity: warning
   prometheus-adapter:
     config:
-      namespace: "prometheus"
+      namespace: prometheus
       prometheus:
         url: http://prometheus-server.prometheus.svc.cluster.local
   grafana:
-    namespace: grafana
+    namespace: prometheus
     injectNamespace: true
     config:
       datasources:
