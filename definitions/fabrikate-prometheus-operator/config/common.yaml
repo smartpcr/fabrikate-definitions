@@ -1,7 +1,7 @@
 config:
 subcomponents:
   prometheus-operator:
-    namespace: prometheus
+    namespace: monitoring
     injectNamespace: true
     config:
       # Depending on which DNS solution you have installed in your cluster enable the right exporter

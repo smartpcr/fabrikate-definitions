@@ -1,6 +1,5 @@
 name: "fabrikate-prometheus-operator"
-generator: static # Deprecated in fabrikate v1.0.0
-type: static # Replaces `generator` in fabrikate v1.0.0
+type: static
 path: "./manifests"
 hooks:
   before-install:
@@ -8,9 +7,8 @@ hooks:
   after-install:
     - echo 'installed prometheus-operator'
 subcomponents:
-  - name: "prometheus-grafana-alertmanater"
-    generator: helm # Deprecated in fabrikate v1.0.0
-    type: helm # Replaces `generator` in fabrikate v1.0.0
+  - name: "prometheus-operator"
+    type: helm
     source: "https://github.com/helm/charts"
     method: "git"
     path: "stable/prometheus-operator"
