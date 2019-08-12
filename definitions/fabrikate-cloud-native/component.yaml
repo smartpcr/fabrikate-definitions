@@ -6,7 +6,7 @@ subcomponents:
   - name: "elasticsearch-fluentd-kibana"
     source: "../fabrikate-elasticsearch-fluentd-kibana"
   - name: "prometheus-operator"
-    source: "../fabrikate-prometheus-operator"
+    source: "../fabrikate-prometheus-grafana"
   - name: "istio"
     source: "../fabrikate-istio"
   - name: "kured"
