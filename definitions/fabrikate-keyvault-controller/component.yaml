@@ -1,0 +1,17 @@
+name: "fabrikate-keyvault-controller"
+generator: static # Deprecated in fabrikate v1.0.0
+type: static # Replaces `generator` in fabrikate v1.0.0
+path: "./manifests"
+hooks:
+  before-install:
+    - echo 'installing keyvault-controller'
+  after-install:
+    - echo 'installed keyvault-controller'
+subcomponents:
+  - name: "keyvault-controller"
+    generator: helm # Deprecated in fabrikate v1.0.0
+    type: helm # Replaces `generator` in fabrikate v1.0.0
+    source: "https://github.com/SparebankenVest/public-helm-charts"
+    method: "git"
+    path: "stable/azure-key-vault-controller"
+    version: "18d22939d30e9b403ab602d3643e0d350efbe79e"
