@@ -1,0 +1,3 @@
+name: tls-cert
+type: helm
+path: "./chart"

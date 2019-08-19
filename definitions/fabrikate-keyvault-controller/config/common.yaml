@@ -1,0 +1,8 @@
+config:
+subcomponents:
+  keyvault-controller:
+    namespace: security
+    injectNamespace: true
+  acr-auth:
+    config:
+      namespace: default
