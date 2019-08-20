@@ -4,8 +4,6 @@ path: "./manifests"
 hooks:
   before-install:
     - echo 'installing keyvault-controller'
-    - "helm repo add spv-charts http://charts.spvapi.no"
-    - "helm repo update"
   after-install:
     - echo 'installed keyvault-controller'
 subcomponents:
