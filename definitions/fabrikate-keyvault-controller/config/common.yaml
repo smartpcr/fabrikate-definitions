@@ -5,7 +5,10 @@ subcomponents:
     injectNamespace: true
     config:
       keyVault.customAuth.enabled: true
-      keyVault.customAuth.podIdentitySelector: compes-bedrock-kv-reader # name of user assigned identity
+      keyVault.customAuth.podIdentitySelector: kv-reader # label used to select azure identity
+      pod_identity_client_id: 9a5f7094-62ec-4d44-9b43-d631a365f8c9
+      pod_identity_selector: kv-reader
+      pod_identity_name: compes-bedrock-kv-reader
   acr-auth:
     config:
       namespace: default
