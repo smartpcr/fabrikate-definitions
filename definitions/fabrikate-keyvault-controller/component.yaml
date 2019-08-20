@@ -7,6 +7,9 @@ hooks:
   after-install:
     - echo 'installed keyvault-controller'
 subcomponents:
+  - name: pod-identity
+    type: component 
+    source: "./pod-identity"
   - name: "keyvault-controller"
     type: helm # Replaces `generator` in fabrikate v1.0.0
     source: "http://charts.spvapi.no"
