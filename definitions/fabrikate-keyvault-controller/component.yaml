@@ -12,12 +12,15 @@ subcomponents:
   - name: "keyvault-controller"
     type: helm # Replaces `generator` in fabrikate v1.0.0
     source: "http://charts.spvapi.no"
-    method: "git"
+    method: "helm"
     path: "azure-key-vault-controller"
     version: "0.1.21"
   - name: "acr-auth"
+    type: component
     source: "./acr-auth"
   - name: "geneva-cert"
+    type: component
     source: "./geneva-cert"
   - name: "tls-cert"
+    type: component
     source: "./tls-cert"
