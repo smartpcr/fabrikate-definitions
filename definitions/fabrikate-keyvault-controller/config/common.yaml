@@ -3,6 +3,9 @@ subcomponents:
   keyvault-controller:
     namespace: security
     injectNamespace: true
+    config:
+      keyVault.customAuth.enabled: true
+      keyVault.customAuth.podIdentitySelector: compes-bedrock-kv-reader # name of user assigned identity
   acr-auth:
     config:
       namespace: default
