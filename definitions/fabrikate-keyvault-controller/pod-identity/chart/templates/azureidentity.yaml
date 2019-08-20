@@ -4,5 +4,5 @@ metadata:
   name: pod-identity
 spec:
   type: 0
-  ResourceID: /subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{{.Values.pod_identity_name}}
+  ResourceID: /subscriptions/{{.Values.subscription_id}}/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{{.Values.pod_identity_name}}
   ClientID: {{.Values.pod_identity_client_id}}
