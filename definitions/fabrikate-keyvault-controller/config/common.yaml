@@ -3,6 +3,12 @@ subcomponents:
   keyvault-controller:
     namespace: security
     injectNamespace: true
+    config:
+      keyVault:
+        customAuth:
+          enabled: true
+          podIdentitySelector: kv-reader # label used to select azure identity
+      
   acr-auth:
     config:
       namespace: default

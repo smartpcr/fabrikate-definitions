@@ -1,0 +1,3 @@
+name: pod-identity
+type: helm
+path: "./chart"

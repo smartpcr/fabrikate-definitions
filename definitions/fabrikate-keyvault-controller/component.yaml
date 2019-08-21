@@ -1,5 +1,4 @@
 name: "fabrikate-keyvault-controller"
-generator: static # Deprecated in fabrikate v1.0.0
 type: static # Replaces `generator` in fabrikate v1.0.0
 path: "./manifests"
 hooks:
@@ -8,16 +7,21 @@ hooks:
   after-install:
     - echo 'installed keyvault-controller'
 subcomponents:
+  - name: pod-identity
+    type: component 
+    source: "./pod-identity"
   - name: "keyvault-controller"
-    generator: helm # Deprecated in fabrikate v1.0.0
     type: helm # Replaces `generator` in fabrikate v1.0.0
-    source: "https://github.com/SparebankenVest/public-helm-charts"
-    method: "git"
-    path: "stable/azure-key-vault-controller"
-    version: "18d22939d30e9b403ab602d3643e0d350efbe79e"
+    source: "http://charts.spvapi.no"
+    method: "helm"
+    path: "azure-key-vault-controller"
+    version: "0.1.21"
   - name: "acr-auth"
+    type: component
     source: "./acr-auth"
   - name: "geneva-cert"
+    type: component
     source: "./geneva-cert"
   - name: "tls-cert"
+    type: component
     source: "./tls-cert"

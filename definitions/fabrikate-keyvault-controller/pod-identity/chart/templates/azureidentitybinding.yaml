@@ -1,0 +1,7 @@
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentityBinding
+metadata:
+  name: pod-identity-binding
+spec:
+  AzureIdentity: pod-identity
+  Selector: {{.Values.pod_identity_selector}}
