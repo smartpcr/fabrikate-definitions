@@ -6,7 +6,7 @@ dns:
   resourceGroup: compes-bedrock-lab
   image:
     name: "1es/external-dns"
-    tag: 638873
+    tag: 720306
 aks:
   clusterName: compes-bedrock-lab
   location: westus2
