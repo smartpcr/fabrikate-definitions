@@ -13,4 +13,6 @@ nginx:
     image:
       name: defaultbackend
       tag: "720305"
-imagePullSecret: acr-auth
+aks:
+  fqdn: "to be replaced"
+imagePullSecrets: acr-auth

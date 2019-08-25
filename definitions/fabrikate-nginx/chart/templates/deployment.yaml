@@ -40,7 +40,7 @@ spec:
               cpu: "10m"
               memory: "20Mi"
       imagePullSecrets:
-        - name: {{.Values.imagePullSecret}}
+        - name: {{.Values.imagePullSecrets}}
 
 ---
 apiVersion: extensions/v1beta1
@@ -136,4 +136,4 @@ spec:
             timeoutSeconds: 1
 
       imagePullSecrets:
-        - name: {{.Values.imagePullSecret}}
+        - name: {{.Values.imagePullSecrets}}
