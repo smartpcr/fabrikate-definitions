@@ -1,0 +1,16 @@
+acr:
+  name: sacebedrockacr
+dns:
+  domain: "aks.run"
+  sslCert: sslcert-aks-run
+  resourceGroup: sace-bedrock-lab
+nginx:
+  controller:
+    image:
+      name: "nginx-ingress-controller"
+      tag: "720305"
+  defaultBackend:
+    image:
+      name: defaultbackend
+      tag: "720305"
+imagePullSecret: acr-auth

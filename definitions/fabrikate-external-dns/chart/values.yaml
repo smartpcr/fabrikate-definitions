@@ -1,13 +1,13 @@
 acr:
   name: oneesdevacr
 dns:
-  domain: "1es.io"
+  domain: "aks.run"
   sslCert: sslcert-aks-run
-  resourceGroup: compes-bedrock-lab
+  resourceGroup: sace-bedrock-lab
   image:
-    name: "1es/external-dns"
+    name: "external-dns"
     tag: 720306
 aks:
-  clusterName: compes-bedrock-lab
+  clusterName: sace-bedrock-lab
   location: westus2
 imagePullSecrets: acr-auth
