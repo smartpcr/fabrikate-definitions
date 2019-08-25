@@ -28,7 +28,7 @@ subcomponents:
           hosts:
             - "alertmanager-space-westus2.xiaodong.cloud"
           tls:
-            - secretName: "sslcert-dev-xiaodong-cloud"
+            - secretName: "sslcert-aks-run"
               hosts:
                 - "alertmanager-space-westus2.xiaodong.cloud"
 
@@ -49,7 +49,7 @@ subcomponents:
           hosts:
             - "prometheus-space-westus2.xiaodong.cloud"
           tls:
-            - secretName: "sslcert-dev-xiaodong-cloud"
+            - secretName: "sslcert-aks-run"
               hosts:
                 - "prometheus-space-westus2.xiaodong.cloud"
 
@@ -64,7 +64,7 @@ subcomponents:
           hosts:
             - "grafana-space-westus2.xiaodong.cloud"
           tls:
-            - secretName: "sslcert-dev-xiaodong-cloud"
+            - secretName: "sslcert-aks-run"
               hosts:
                 - "grafana-space-westus2.xiaodong.cloud"
         persistence:

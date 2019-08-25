@@ -2,7 +2,7 @@ acr:
   name: oneesdevacr
 dns:
   domain: "1es.io"
-  sslCert: sslcert-dev-xiaodong-world
+  sslCert: sslcert-aks-run
   resourceGroup: compes-bedrock-lab
   image:
     name: "1es/external-dns"
