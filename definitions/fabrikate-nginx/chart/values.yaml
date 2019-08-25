@@ -13,6 +13,9 @@ nginx:
     image:
       name: defaultbackend
       tag: "720305"
+  connectTimeout: "120"
+  readTimeout: "120"
+  sendTimeout: "120"
 aks:
   fqdn: "to be replaced"
 imagePullSecrets: acr-auth

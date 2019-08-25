@@ -65,6 +65,9 @@ spec:
       annotations:
         prometheus.io/port: '10254'
         prometheus.io/scrape: 'true'
+        nginx.ingress.kubernetes.io/proxy-connect-timeout: '{{.Values.nginx.connectTimeout}}'
+        nginx.ingress.kubernetes.io/proxy-send-timeout: '{{.Values.nginx.sendTimeout}}'
+        nginx.ingress.kubernetes.io/proxy-read-timeout: '{{.Values.nginx.readTimeout}}'
     spec:
       serviceAccountName: nginx-ingress-serviceaccount
       containers:
