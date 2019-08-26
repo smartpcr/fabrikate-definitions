@@ -3,15 +3,23 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{.Values.app}}-metrics-servicemonitor
+  name: {{.name}}-metrics-servicemonitor
   namespace: {{.Values.prometheusNamespace}}
   labels:
-    app: {{.Values.app}}
-    team: {{.Values.team}}
+    {{- if .app }}
+    app: {{.app}}
+    {{ else if .k8sapp }}
+    app.kubernetes.io/name: {{.k8sapp}}
+    {{- end }}
+    team: {{.team}}
 spec:
   selector:
     matchLabels:
-      app: {{.Values.app}}
+      {{- if .app }}
+      app: {{.app}}
+      {{ else if .k8sapp }}
+      app.kubernetes.io/name: {{.k8sapp}}
+      {{- end }}
   endpoints:
   - port: metrics
     interval: 15s

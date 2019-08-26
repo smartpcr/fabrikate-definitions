@@ -3,10 +3,12 @@ services:
   - name: nginx
     enabled: true
     namespace: ingress-nginx
-    app: nginx-controller
+    k8sname: ingress-nginx
     team: infra
+    port: 10254
   - name: flux
     enabled: true
     namespace: flux
-    app: flux-controller
+    app: flux
     team: infra
+    release: flux
