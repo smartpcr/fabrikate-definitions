@@ -24,6 +24,10 @@ spec:
       {{- end }}
       release: {{.promReleaseLabel}}
   {{- if .port }}
+  namespaceSelector:
+    matchNames:
+      - {{.namespace}}
+    any: true
   endpoints:
   - port: {{.port}}
     interval: 15s
