@@ -72,7 +72,6 @@ subcomponents:
           accessModes: ["ReadWriteOnce"]
           size: 10Gi
 
-      exporters:
-        kubelet:
-          serviceMonitor:
-            https: false
+      kubelet:
+        serviceMonitor:
+          https: false
