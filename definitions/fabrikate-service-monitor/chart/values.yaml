@@ -4,6 +4,7 @@ services:
     enabled: true
     namespace: ingress-nginx
     promNamespace: monitoring
+    promReleaseLabel: prometheus-operator
     k8sname: ingress-nginx
     team: infra
     port: 10254
@@ -11,7 +12,8 @@ services:
     enabled: true
     namespace: flux
     promNamespace: monitoring
+    promReleaseLabel: prometheus-operator
     app: flux
     team: infra
     release: flux
-    port: 3030
+    port: http # points to 3030

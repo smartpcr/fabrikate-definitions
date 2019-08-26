@@ -13,6 +13,7 @@ metadata:
     app.kubernetes.io/name: {{.k8sname}}
     {{- end }}
     team: {{.team}}
+    release: {{.promReleaseLabel}}
 spec:
   selector:
     matchLabels:
@@ -21,8 +22,9 @@ spec:
       {{- else if .k8sname }}
       app.kubernetes.io/name: {{.k8sname}}
       {{- end }}
+      release: {{.promReleaseLabel}}
   endpoints:
-  - port: metrics
+  - port: {{.port}}
     interval: 15s
 {{- end }}
 {{- end }}
