@@ -1,17 +1,8 @@
 name: "fabrikate-nginx-ingress"
-generator: static # Deprecated in fabrikate v1.0.0
-type: static # Replaces `generator` in fabrikate v1.0.0
-path: "./manifests"
+type: helm
+path: "./chart"
 hooks:
   before-install:
     - echo 'installing nginx-ingress'
   after-install:
     - echo 'installed nginx-ingress'
-subcomponents:
-  - name: "nginx-ingress"
-    generator: helm # Deprecated in fabrikate v1.0.0
-    type: helm # Replaces `generator` in fabrikate v1.0.0
-    source: "https://github.com/helm/charts"
-    method: "git"
-    path: "stable/nginx-ingress"
-    version: "e574e9431d4df9ac695b57fbb43a70a1619a8a07"
