@@ -3,12 +3,14 @@ services:
   - name: nginx
     enabled: true
     namespace: ingress-nginx
+    promNamespace: monitoring
     k8sname: ingress-nginx
     team: infra
     port: 10254
   - name: flux
     enabled: true
     namespace: flux
+    promNamespace: monitoring
     app: flux
     team: infra
     release: flux

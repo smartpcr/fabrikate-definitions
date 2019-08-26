@@ -1,10 +1,11 @@
 {{- range .Values.services }}
+{{- if .enabled }}
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{.name}}-metrics-servicemonitor
-  namespace: {{.Values.prometheusNamespace}}
+  namespace: {{.Values.promNamespace}}
   labels:
     {{- if .app }}
     app: {{.app}}
@@ -23,4 +24,5 @@ spec:
   endpoints:
   - port: metrics
     interval: 15s
+{{- end }}
 {{- end }}
