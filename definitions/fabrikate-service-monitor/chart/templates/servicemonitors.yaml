@@ -23,8 +23,10 @@ spec:
       app.kubernetes.io/name: {{.k8sname}}
       {{- end }}
       release: {{.promReleaseLabel}}
+  {{- if .port }}
   endpoints:
   - port: {{.port}}
     interval: 15s
+  {{- end }}
 {{- end }}
 {{- end }}
