@@ -14,3 +14,4 @@ services:
     app: flux
     team: infra
     release: flux
+    port: 3030

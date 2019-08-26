@@ -9,8 +9,8 @@ metadata:
   labels:
     {{- if .app }}
     app: {{.app}}
-    {{ else if .k8sapp }}
-    app.kubernetes.io/name: {{.k8sapp}}
+    {{- else if .k8sname }}
+    app.kubernetes.io/name: {{.k8sname}}
     {{- end }}
     team: {{.team}}
 spec:
@@ -18,8 +18,8 @@ spec:
     matchLabels:
       {{- if .app }}
       app: {{.app}}
-      {{ else if .k8sapp }}
-      app.kubernetes.io/name: {{.k8sapp}}
+      {{- else if .k8sname }}
+      app.kubernetes.io/name: {{.k8sname}}
       {{- end }}
   endpoints:
   - port: metrics
