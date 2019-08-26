@@ -1,0 +1,8 @@
+name: "fabrikate-service-monitor"
+type: helm
+path: "./chart"
+hooks:
+  before-install:
+    - echo 'installing service-monitor'
+  after-install:
+    - echo 'installed service-monitor'

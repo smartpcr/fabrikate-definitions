@@ -1,0 +1,5 @@
+config:
+subcomponents:
+  nginx-ingress:
+    namespace: ingress-nginx
+    injectNamespace: true

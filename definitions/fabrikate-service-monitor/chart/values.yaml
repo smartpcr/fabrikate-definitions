@@ -1,0 +1,12 @@
+prometheusNamespace: monitoring
+services:
+  - name: nginx
+    enabled: true
+    namespace: ingress-nginx
+    app: nginx-controller
+    team: infra
+  - name: flux
+    enabled: true
+    namespace: flux
+    app: flux-controller
+    team: infra
