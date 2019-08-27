@@ -33,6 +33,11 @@ spec:
   endpoints:
   - port: {{.port}}
     interval: 15s
+    {{- if .path }}
+    path: {{.path}}
+    {{- else }}
+    path: /metrics
+    {{- end }}
   {{- end }}
 {{- end }}
 {{- end }}
