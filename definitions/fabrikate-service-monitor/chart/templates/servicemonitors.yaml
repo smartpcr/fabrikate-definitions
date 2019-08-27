@@ -23,11 +23,11 @@ spec:
       app.kubernetes.io/name: {{.k8sname}}
       {{- end }}
       release: {{.promReleaseLabel}}
-  {{- if .port }}
   namespaceSelector:
     matchNames:
       - {{.namespace}}
     any: true
+  {{- if .port }}
   endpoints:
   - port: {{.port}}
     interval: 15s
