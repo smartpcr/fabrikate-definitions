@@ -22,7 +22,9 @@ spec:
       {{- else if .k8sname }}
       app.kubernetes.io/name: {{.k8sname}}
       {{- end }}
-      release: {{.promReleaseLabel}}
+      {{- if .release }}
+      release: {{.release}}
+      {{- end }}
   namespaceSelector:
     matchNames:
       - {{.namespace}}
