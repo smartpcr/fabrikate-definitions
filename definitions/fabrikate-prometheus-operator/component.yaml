@@ -1,15 +1,8 @@
 name: "fabrikate-prometheus-operator"
-type: static
-path: "./manifests"
+type: helm
+path: "./chart"
 hooks:
   before-install:
     - echo 'installing prometheus-operator'
   after-install:
     - echo 'installed prometheus-operator'
-subcomponents:
-  - name: "prometheus-operator"
-    type: helm
-    source: "https://github.com/helm/charts"
-    method: "git"
-    path: "stable/prometheus-operator"
-    version: "f4743a18769c5405413e1d6cd897bd9c877ce1b1"
