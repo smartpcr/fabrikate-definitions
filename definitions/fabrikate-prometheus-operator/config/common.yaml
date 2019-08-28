@@ -3,3 +3,38 @@ subcomponents:
   prometheus-operator:
     namespace: monitoring
     injectNamespace: true
+    config:
+      coreDns:
+        enabled: true
+      kubeDns:
+        enabled: false
+      alertmanager:
+        alertmanagerSpec:
+          logLevel: "debug"
+          storage:
+            volumeClaimTemplate:
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                resources:
+                  requests:
+                    storage: 10Gi
+      prometheus:
+        prometheusSpec:
+          storageSpec:
+            volumeClaimTemplate:
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                resources:
+                  requests:
+                    storage: 10Gi
+      grafana:
+        adminUser: "admin"
+        adminPassword: "grafana"
+        persistence:
+          enabled: true
+          accessModes: ["ReadWriteOnce"]
+          size: 10Gi
+
+      kubelet:
+        serviceMonitor:
+          https: false
