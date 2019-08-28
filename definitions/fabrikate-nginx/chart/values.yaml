@@ -9,6 +9,9 @@ nginx:
     image:
       name: "nginx-ingress-controller"
       tag: "720305"
+    metrics:
+      serviceMonitor:
+        enabled: true
   defaultBackend:
     image:
       name: defaultbackend
