@@ -7,7 +7,7 @@ services:
     promReleaseLabel: prometheus-operator
     k8sname: ingress-nginx
     team: infra
-    port: 10254
+    port: metrics
   - name: flux
     enabled: true
     namespace: flux
