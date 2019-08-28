@@ -26,11 +26,11 @@ subcomponents:
             kubernetes.io/ingress.class: nginx
             kubernetes.io/tls-acme: "true"
           hosts:
-            - "alertmanager-space-westus2.{{.Values.dns.domain}}" # overwriten at HLD
+            - "alertmanager-space-westus2.aks.run" # overwriten at HLD
           tls:
-            - secretName: "{{.Values.dns.sslCert}}" # overwriten at HLD
+            - secretName: "sslcert-aks-run" # overwriten at HLD
               hosts:
-                - "alertmanager-space-westus2.{{.Values.dns.domain}}" # overwriten at HLD
+                - "alertmanager-space-westus2.aks.run" # overwriten at HLD
 
       prometheus:
         prometheusSpec:
@@ -47,11 +47,11 @@ subcomponents:
             kubernetes.io/ingress.class: nginx
             kubernetes.io/tls-acme: "true"
           hosts:
-            - "prometheus-space-westus2.{{.Values.dns.domain}}"
+            - "prometheus-space-westus2.aks.run"
           tls:
-            - secretName: "{{.Values.dns.sslCert}}"
+            - secretName: "sslcert-aks-run"
               hosts:
-                - "prometheus-space-westus2.{{.Values.dns.domain}}"
+                - "prometheus-space-westus2.aks.run"
 
       grafana:
         adminUser: "admin"
@@ -62,11 +62,11 @@ subcomponents:
             kubernetes.io/ingress.class: nginx
             kubernetes.io/tls-acme: "true"
           hosts:
-            - "grafana-space-westus2.{{.Values.dns.domain}}"
+            - "grafana-space-westus2.aks.run"
           tls:
-            - secretName: "{{.Values.dns.sslCert}}"
+            - secretName: "sslcert-aks-run"
               hosts:
-                - "grafana-space-westus2.{{.Values.dns.domain}}"
+                - "grafana-space-westus2.aks.run"
         persistence:
           enabled: true
           accessModes: ["ReadWriteOnce"]
