@@ -15,20 +15,6 @@ metadata:
     team: {{.team}}
     release: {{.promReleaseLabel}}
 spec:
-  selector:
-    matchLabels:
-      {{- if .app }}
-      app: {{.app}}
-      {{- else if .k8sname }}
-      app.kubernetes.io/name: {{.k8sname}}
-      {{- end }}
-      {{- if .release }}
-      release: {{.release}}
-      {{- end }}
-  namespaceSelector:
-    matchNames:
-      - {{.namespace}}
-    any: true
   {{- if .port }}
   endpoints:
   - port: {{.port}}
@@ -39,5 +25,18 @@ spec:
     path: /metrics
     {{- end }}
   {{- end }}
+  namespaceSelector:
+    matchNames:
+      - {{.namespace}}
+  selector:
+    matchLabels:
+      {{- if .app }}
+      app: {{.app}}
+      {{- else if .k8sname }}
+      app.kubernetes.io/name: {{.k8sname}}
+      {{- end }}
+      {{- if .release }}
+      release: {{.release}}
+      {{- end }}
 {{- end }}
 {{- end }}
