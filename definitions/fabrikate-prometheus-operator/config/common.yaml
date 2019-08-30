@@ -18,6 +18,17 @@ subcomponents:
                 resources:
                   requests:
                     storage: 10Gi
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - "alertmanager-space-westus2.{{.Values.dns.name}}"
+          tls:
+            - secretName: "{{.Values.dns.sslCert}}"
+              hosts:
+                - "alertmanager-space-westus2.{{.Values.dns.name}}"
       prometheus:
         prometheusSpec:
           storageSpec:
@@ -27,6 +38,17 @@ subcomponents:
                 resources:
                   requests:
                     storage: 10Gi
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - "prometheus-space-westus2.{{.Values.dns.name}}"
+          tls:
+            - secretName: "{{.Values.dns.sslCert}}"
+              hosts:
+                - "prometheus-space-westus2.{{.Values.dns.name}}"
       grafana:
         adminUser: "admin"
         adminPassword: "grafana"
@@ -34,6 +56,17 @@ subcomponents:
           enabled: true
           accessModes: ["ReadWriteOnce"]
           size: 10Gi
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - "grafana-space-westus2.{{.Values.dns.name}}"
+          tls:
+            - secretName: "{{.Values.dns.sslCert}}"
+              hosts:
+                - "grafana-space-westus2.{{.Values.dns.name}}"
 
       kubelet:
         serviceMonitor:
