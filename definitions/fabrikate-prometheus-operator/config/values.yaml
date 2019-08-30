@@ -1,3 +1,0 @@
-dns:
-  domain: "aks.run"
-  sslCert: sslcert-aks-run
