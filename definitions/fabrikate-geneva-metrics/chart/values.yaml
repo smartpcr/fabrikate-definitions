@@ -99,4 +99,4 @@ aks:
   availabilitySet: ""
   loadBalancerSku: "Basic"
 imagePullSecrets: acr-auth
-azureConfigJsonFile: "./ad-creds/azure.json"
+azureConfigJsonFile: "../ad-creds/azure.json"
