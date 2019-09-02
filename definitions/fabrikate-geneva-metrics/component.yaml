@@ -1,0 +1,3 @@
+name: "fabrikate-geneva-metrics"
+type: helm
+path: "./chart"

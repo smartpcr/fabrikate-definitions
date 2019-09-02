@@ -1,5 +1,4 @@
 config:
-subcomponents:
-  nginx-ingress:
-    namespace: ingress-nginx
-    injectNamespace: true
+  installIstioServices: false # Setup VirtualServices to work with Istio
+namespace: ingress-nginx
+injectNamespace: true
