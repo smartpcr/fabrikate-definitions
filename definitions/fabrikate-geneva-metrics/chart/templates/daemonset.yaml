@@ -57,12 +57,6 @@ spec:
               value: "{{.Values.acr.name}}.azurecr.io"
             - name: REGISTRY_USERNAME
               value: "{{.Values.acr.name}}"
-            - name: REGISTRY_PASSWORD
-              value: "{{.Values.acr.pwd}}"
-            - name: GENEVA_CERTIFICATE
-              value: "{{.Values.geneva.cert.base64string}}"
-            - name: GENEVA_CERTIFICATE_THUMBPRINT
-              value: "{{.Values.geneva.cert.thumbprint}}"
             - name: HOST_ETC
               value: "/rootfs/etc"
             - name: HOST_PROC
