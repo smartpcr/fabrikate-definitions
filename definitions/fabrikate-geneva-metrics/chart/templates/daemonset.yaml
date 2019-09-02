@@ -90,8 +90,8 @@ spec:
       - name: acr-auth
       volumes:
         - name: ad-creds
-          configMap:
-            name: azure-config
+          hostPath:
+            path: /etc/kubernetes
         - name: docker
           hostPath:
             path: /var/run/docker.sock
