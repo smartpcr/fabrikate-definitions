@@ -6,7 +6,7 @@
   "aadClientSecret": "{{.Values.aks.spn.pwd}}",
   "resourceGroup": "{{.Values.aks.nodeResourceGroup}}",
   "location": "{{.Values.aks.location}}",
-  "vmType": "{{ default 'standard' .Values.aks.vmType }}",
+  "vmType": "{{ .Values.aks.vmType }}",
   "subnetName": "{{.Values.aks.subnetName}}",
   "securityGroupName": "{{.Values.aks.nsg}}",
   "vnetName": "{{.Values.aks.vnet}}",
