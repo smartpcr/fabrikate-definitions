@@ -3,6 +3,8 @@ global:
   subscriptionId: ""
 acr:
   name: oneesdevacr
+kv:
+  name: sace-bedrock-kv
 geneva:
   account: oneesdiscoint
   namespace: intdiscoeastusonees

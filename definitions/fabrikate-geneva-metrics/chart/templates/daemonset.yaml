@@ -46,7 +46,7 @@ spec:
             - name: KEY_VAULT
               value: "{{.Values.kv.name}}"
             - name: TENANT
-              value: "{{.Values.azAccount.tenantId}}"
+              value: "{{.Values.global.tenantId}}"
             - name: ROLE
               value: "{{.Values.aks.clusterName}}"
             - name: TELEGRAF_MEMORY
