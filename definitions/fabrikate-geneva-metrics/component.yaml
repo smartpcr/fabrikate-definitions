@@ -1,3 +1,10 @@
 name: "fabrikate-geneva-metrics"
 type: helm
 path: "./chart"
+hooks:
+  before-install:
+    - echo 'prepare azure.json file under /etc/kubernetes'
+    - ./EnsureFileExists.sh -f ./ad-creds/azure.json
+  after-install:
+    - echo 'installed geneva-metrics'
+    - rm ./ad-creds/azure.json
