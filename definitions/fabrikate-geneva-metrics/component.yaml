@@ -7,4 +7,3 @@ hooks:
     - ./EnsureFileExists.sh -f ~/ad-creds/azure.json
   after-install:
     - echo 'installed geneva-metrics'
-    - rm ~/ad-creds/azure.json
