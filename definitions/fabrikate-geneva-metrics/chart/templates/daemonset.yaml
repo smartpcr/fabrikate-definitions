@@ -18,8 +18,8 @@ spec:
         - name: linux-geneva-agent-aksmsi
           image: "{{.Values.acr.name}}.azurecr.io/{{.Values.geneva.metricsAksmsi.image.name}}:{{.Values.geneva.metricsAksmsi.image.tag}}"
           volumeMounts:
-            - name: ad-creds
-              mountPath: /secrets/ad-creds
+            - name: azure-config
+              mountPath: /secrets/ad-creds/azure.json
               readOnly: true
         - name: linux-geneva-agent-metrics
           image: "{{.Values.acr.name}}.azurecr.io/{{.Values.geneva.metrics.image.name}}:{{.Values.geneva.metrics.image.tag}}"
@@ -89,9 +89,9 @@ spec:
       imagePullSecrets:
       - name: acr-auth
       volumes:
-        - name: ad-creds
-          hostPath:
-            path: ~/ad-creds
+        - name: azure-config
+          configMap:
+            name: azure-config
         - name: docker
           hostPath:
             path: /var/run/docker.sock

@@ -3,7 +3,6 @@ type: helm
 path: "./chart"
 hooks:
   before-install:
-    - echo 'prepare azure.json file under ~/ad-creds'
-    - ./EnsureFileExists.sh -f ~/ad-creds/azure.json
+    - echo 'installing geneva-metrics'
   after-install:
     - echo 'installed geneva-metrics'
