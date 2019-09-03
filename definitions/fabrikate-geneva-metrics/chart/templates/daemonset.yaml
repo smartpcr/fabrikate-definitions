@@ -91,7 +91,7 @@ spec:
       volumes:
         - name: ad-creds
           hostPath:
-            path: /etc/kubernetes
+            path: ~/ad-creds
         - name: docker
           hostPath:
             path: /var/run/docker.sock
