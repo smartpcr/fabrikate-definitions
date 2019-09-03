@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geneva-services-statsd
+  labels:
+    app: geneva-services
+spec:
+  selector:
+    matchLabels:
+      name: geneva-services-statsd
+  replicas: {{.Values.geneva.replicas}}
+  template:
+    metadata:
+      labels:
+        name: geneva-services-statsd
+    spec:
+      serviceAccount: geneva
+      containers:
+        # MDM
+        - name: mdm
+          image: "{{.Values.acr.name}}.azurecr.io/{{.Values.geneva.mdm.image.name}}:{{.Values.geneva.mdm.image.tag}}"
+          env:
+            - name: METRIC_ENDPOINT
+              value: "https://global.metrics.nsatc.net/"
+            - name: MDM_ACCOUNT
+              value: "{{.Values.geneva.account}}"
+            - name: MDM_LOG_LEVEL
+              value: "Error"
+            - name: MDM_INPUT
+              value: statsd_udp
+            - name: CERT_FILE
+              value: "/secrets/gcscert.pem"
+            - name: KEY_FILE
+              value: "/secrets/gcskey.pem"
+          volumeMounts:
+            - name: mdm-auth-vol
+              mountPath: /secrets
+
+      imagePullSecrets:
+      - name: acr-auth
+
+      volumes:
+        # MDM
+        - name: mdm-auth-vol
+          secret:
+            secretName: geneva-certificate
