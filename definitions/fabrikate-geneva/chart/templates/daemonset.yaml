@@ -21,6 +21,7 @@ spec:
           volumeMounts:
             - name: azure-config
               mountPath: /secrets/ad-creds/azure.json
+              subPath: azure.json
               readOnly: true
         - name: linux-geneva-agent-metrics
           image: "{{.Values.acr.name}}.azurecr.io/{{.Values.geneva.metrics.image.name}}:{{.Values.geneva.metrics.image.tag}}"
