@@ -82,6 +82,12 @@ geneva:
     confs:
       - name: logrotate_mdsd.conf
       - name: janitor_start.sh
+  crc32:
+    mdsd: "cd37575c"
+    fluentdApi: "72c7f6a0"
+    fluentdContainerLogs: "b0a22753"
+    fluentdSystemd: "2fe82ab5"
+    fluentd: "74004e7e"
 aks:
   clusterName: sace-bedrock-lab
   resourceGroup: sace-bedrock-lab
