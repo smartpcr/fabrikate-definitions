@@ -135,11 +135,11 @@ spec:
   template:
     metadata:
       annotations:
-        mdsd.xml-crc32: "$(RenderTemplate -File mdsd.xml -Encoding CRC32)"
-        fluentd-api.conf-crc32: "$(RenderTemplate -File fluentd-api.conf -Encoding CRC32)"
-        fluentd-container-logs.conf-crc32: "$(RenderFile -File fluentd-container-logs.conf -Encoding CRC32)"
-        fluentd-systemd.conf-crc32: "$(RenderFile -File fluentd-systemd.conf -Encoding CRC32)"
-        fluentd.conf-crc32: "$(RenderTemplate -File fluentd.conf -Encoding CRC32)"
+        mdsd.xml-crc32: "{{.Values.geneva.crc32.mdsd}}"
+        fluentd-api.conf-crc32: "{{.Values.geneva.crc32.fluentdApi}}"
+        fluentd-container-logs.conf-crc32: "{{.Values.geneva.crc32.fluentdContainerLogs}}"
+        fluentd-systemd.conf-crc32: "{{.Values.geneva.crc32.fluentdSystemd}}"
+        fluentd.conf-crc32: "{{.Values.geneva.crc32.fluentd}}"
       labels:
         name: geneva-services
     spec:
