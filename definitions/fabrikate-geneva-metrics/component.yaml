@@ -1,8 +1,0 @@
-name: "fabrikate-geneva-metrics"
-type: helm
-path: "./chart"
-hooks:
-  before-install:
-    - echo 'installing geneva-metrics'
-  after-install:
-    - echo 'installed geneva-metrics'
