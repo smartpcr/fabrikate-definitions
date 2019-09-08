@@ -23,12 +23,7 @@ subcomponents:
           annotations:
             kubernetes.io/ingress.class: nginx
             kubernetes.io/tls-acme: "true"
-          hosts:
-            - "alertmanager-space-westus2.mydomain"
-          tls:
-            - secretName: "mysslcert"
-              hosts:
-                - "alertmanager-space-westus2.mydomain"
+          
       prometheus:
         prometheusSpec:
           storageSpec:
@@ -43,12 +38,7 @@ subcomponents:
           annotations:
             kubernetes.io/ingress.class: nginx
             kubernetes.io/tls-acme: "true"
-          hosts:
-            - "prometheus-space-westus2.mydomain"
-          tls:
-            - secretName: "mysslcert"
-              hosts:
-                - "prometheus-space-westus2.mydomain"
+
       grafana:
         adminUser: "admin"
         adminPassword: "grafana"
@@ -61,12 +51,6 @@ subcomponents:
           annotations:
             kubernetes.io/ingress.class: nginx
             kubernetes.io/tls-acme: "true"
-          hosts:
-            - "grafana-space-westus2.mydomain"
-          tls:
-            - secretName: "mysslcert"
-              hosts:
-                - "grafana-space-westus2.mydomain"
 
       kubelet:
         serviceMonitor:
