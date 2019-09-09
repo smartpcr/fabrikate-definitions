@@ -1,6 +1,7 @@
 global:
   tenantId: ""
   subscriptionId: ""
+  envName: "dev"
 acr:
   name: oneesdevacr
 kv:
