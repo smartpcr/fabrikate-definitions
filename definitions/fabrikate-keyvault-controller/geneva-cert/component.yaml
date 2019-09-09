@@ -1,3 +1,0 @@
-name: geneva-cert
-type: helm
-path: "./chart"

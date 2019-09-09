@@ -1,14 +1,18 @@
 config:
 subcomponents:
-  keyvault-controller:
+  kv-controller:
     namespace: security
     injectNamespace: true
     config:
+      installCrd: false
+      logLevel: debug
       keyVault:
         customAuth:
-          enabled: true
-          podIdentitySelector: kv-reader # label used to select azure identity
-      
-  acr-auth:
+          enabled: false # set to true when use pod identity
+          # podIdentitySelector: kv-reader # label used to select azure identity
+  env-injector:
+    namespace: security
+    injectNamespace: true
     config:
-      namespace: default
+      installCrd: false
+      logLevel: debug

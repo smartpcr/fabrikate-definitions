@@ -1,3 +1,0 @@
-namespace: default
-vault_name: xiaodong-kv
-geneva_certificate_secret_name: geneva-certificate

@@ -1,0 +1,11 @@
+name: "env-injector"
+type: helm
+source: "http://charts.spvapi.no"
+method: "helm"
+path: "azure-key-vault-env-injector"
+version: "0.1.3"
+hooks:
+  before-install:
+    - echo 'installing env-injector'
+  after-install:
+    - echo 'installed env-injector'

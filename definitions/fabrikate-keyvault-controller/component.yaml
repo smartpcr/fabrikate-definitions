@@ -1,27 +1,13 @@
 name: "fabrikate-keyvault-controller"
 type: static # Replaces `generator` in fabrikate v1.0.0
 path: "./manifests"
-hooks:
-  before-install:
-    - echo 'installing keyvault-controller'
-  after-install:
-    - echo 'installed keyvault-controller'
 subcomponents:
-  - name: pod-identity
+  # - name: pod-identity
+  #   type: component
+  #   source: "./pod-identity"
+  - name: "kv-controller"
     type: component
-    source: "./pod-identity"
-  - name: "keyvault-controller"
-    type: helm 
-    source: "http://charts.spvapi.no"
-    method: "helm"
-    path: "azure-key-vault-controller"
-    version: "0.1.21"
-  - name: "acr-auth"
+    source: "./kv-controller"
+  - name: "env-injector"
     type: component
-    source: "./acr-auth"
-  - name: "geneva-cert"
-    type: component
-    source: "./geneva-cert"
-  - name: "tls-cert"
-    type: component
-    source: "./tls-cert"
+    source: "./env-injector"

@@ -1,3 +1,0 @@
-namespace: default
-vault_name: xiaodong-kv
-tls_cert_secret_name: tls-cert
