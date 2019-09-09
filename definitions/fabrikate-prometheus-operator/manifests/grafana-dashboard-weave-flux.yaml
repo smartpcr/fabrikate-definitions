@@ -705,7 +705,7 @@ data:
               {
                 "allValue": null,
                 "current": {},
-                "datasource": "${DS_PROMETHEUS}",
+                "datasource": "Prometheus",
                 "definition": "label_values(flux_daemon_job_duration_seconds_bucket, job)",
                 "hide": 0,
                 "includeAll": false,
