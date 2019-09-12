@@ -7,7 +7,7 @@ metadata:
     tier: node
     k8s-app: aad-pod-id
   name: nmi
-  namespace: {{Release.Namespace}}
+  namespace: {{.Release.Namespace}}
 spec:
   updateStrategy:
     type: RollingUpdate
