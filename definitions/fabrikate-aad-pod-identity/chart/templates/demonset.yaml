@@ -7,8 +7,10 @@ metadata:
     tier: node
     k8s-app: aad-pod-id
   name: nmi
-  namespace: default
+  namespace: {{Release.Namespace}}
 spec:
+  updateStrategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -24,10 +26,9 @@ spec:
         name: iptableslock
       containers:
       - name: nmi
-        image: "mcr.microsoft.com/k8s/aad-pod-identity/nmi:1.4"
+        image: "mcr.microsoft.com/k8s/aad-pod-identity/nmi:1.5.2"
         imagePullPolicy: Always
         args:
-          - nmi
           - "--host-ip=$(HOST_IP)"
           - "--node=$(NODE_NAME)"
         env:
@@ -39,6 +40,13 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
+        resources:
+          limits:
+            cpu: 200m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
         securityContext:
           privileged: true
           capabilities:
@@ -47,5 +55,11 @@ spec:
         volumeMounts:
         - mountPath: /run/xtables.lock
           name: iptableslock
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
       nodeSelector:
         beta.kubernetes.io/os: linux
