@@ -1,0 +1,4 @@
+config:
+  installIstioServices: false # Setup VirtualServices to work with Istio
+namespace: pod-identity
+injectNamespace: true

@@ -1,9 +1,8 @@
-name: fabrikate-aad-pod-identity
-generator: static # Deprecated in fabrikate v1.0.0
-type: static # Replaces `generator` in fabrikate v1.0.0
-path: "./tmp"
+name: "fabrikate-aad-pod-identity"
+type: helm
+path: "./chart"
 hooks:
   before-install:
-    - curl -OL https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
-    - mkdir -p tmp
-    - mv deployment-rbac.yaml tmp
+    - echo 'installing pod-identity'
+  after-install:
+    - echo 'installed pod-identity'

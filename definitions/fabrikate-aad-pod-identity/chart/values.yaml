@@ -1,13 +1,11 @@
 acr:
   name: oneesdevacr
-dns:
-  domain: "aks.run"
-  sslCert: sslcert-aks-run
-  resourceGroup: sace-bedrock-lab
-  image:
-    name: "external-dns"
-    tag: 720306
-aks:
-  clusterName: sace-bedrock-lab
-  location: westus2
-imagePullSecrets: acr-auth
+podIdentity:
+  mic:
+    image:
+      name: mic
+      tag: 1.5.2
+  nmi:
+    image:
+      name: nmi
+      tag: 1.5.2
