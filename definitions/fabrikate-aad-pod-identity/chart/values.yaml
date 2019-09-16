@@ -1,11 +1,7 @@
-acr:
-  name: oneesdevacr
 podIdentity:
   mic:
     image:
-      name: mic
       tag: 1.5.2
   nmi:
     image:
-      name: nmi
       tag: 1.5.2
