@@ -1,6 +1,7 @@
 global:
   tenantId: ""
   subscriptionId: ""
+  envName: "dev"
 acr:
   name: oneesdevacr
 kv:
@@ -76,8 +77,8 @@ geneva:
     - name: fluentd.conf
   azsecpack:
     image:
-      name: geneva/azsecpack
-      tag: 335686
+      name: geneva-azsecpack
+      tag: 720310
   janitor:
     confs:
       - name: logrotate_mdsd.conf

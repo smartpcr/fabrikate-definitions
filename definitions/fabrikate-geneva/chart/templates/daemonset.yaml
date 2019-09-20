@@ -233,7 +233,7 @@ spec:
             - name: AzSecPack_GCS_key
               value: "/secrets/gcskey.pem"
             - name: AzSecPack_GCS_Environment
-              value: "{{.Values.global.envName}}"
+              value: "{{.Values.geneva.environment}}"
             - name: AzSecPack_GCS_Account
               value: "{{.Values.geneva.account}}"
             - name: AzSecPack_EventVersion

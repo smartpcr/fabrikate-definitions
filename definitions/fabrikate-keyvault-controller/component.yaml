@@ -8,6 +8,6 @@ subcomponents:
   - name: "kv-controller"
     type: component
     source: "./kv-controller"
-  - name: "env-injector"
-    type: component
-    source: "./env-injector"
+  # - name: "env-injector"
+  #   type: component
+  #   source: "./env-injector"

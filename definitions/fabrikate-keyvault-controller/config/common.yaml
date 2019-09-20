@@ -4,13 +4,13 @@ subcomponents:
     namespace: security
     injectNamespace: true
     config:
-      installCrd: false
+      installCrd: true
       keyVault:
         customAuth:
           enabled: false # set to true when use pod identity
           # podIdentitySelector: kv-reader # label used to select azure identity
-  env-injector:
-    namespace: security
-    injectNamespace: true
-    config:
-      installCrd: true
+  # env-injector:
+  #   namespace: security
+  #   injectNamespace: true
+  #   config:
+  #     installCrd: true
