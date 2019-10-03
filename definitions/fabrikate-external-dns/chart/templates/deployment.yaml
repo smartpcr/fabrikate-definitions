@@ -14,7 +14,7 @@ spec:
       serviceAccountName: external-dns
       containers:
         - name: external-dns
-          image: "{{.Values.acr.name}}.azurecr.io/{{.Values.dns.image.name}}:{{.Values.dns.image.tag}}"
+          image: "{{.Values.acr.name}}.azurecr.io/{{.Values.image.name}}:{{.Values.image.tag}}"
           resources:
             requests:
               cpu: "50m"
