@@ -35,30 +35,6 @@ spec:
           - name: azure-config-file
             mountPath: /etc/kubernetes
             readOnly: true
-        {{- if .Values.includeOldDnsZone }}
-        - name: {{.Values.oldZone.name}}
-          image: "{{.Values.acr.name}}.azurecr.io/{{.Values.image.name}}:{{.Values.image.tag}}"
-          resources:
-            requests:
-              cpu: "50m"
-              memory: "25Mi"
-            limits:
-              cpu: "100m"
-              memory: "100Mi"
-          args:
-            - --source=service
-            - --source=ingress
-            - --domain-filter={{.Values.oldZone.domainFilter}}
-            - --provider=azure
-            - --azure-resource-group={{.Values.oldZone.dnsZoneResourceGroup}}
-            - --txt-owner-id={{.Values.oldZone.txtOwnerId}}
-            - --log-level=debug
-            - --policy=sync
-          volumeMounts:
-          - name: azure-config-file-old
-            mountPath: /etc/kubernetes
-            readOnly: true
-        {{- end }}
       imagePullSecrets:
         - name: {{.Values.imagePullSecrets}}
 
@@ -66,8 +42,3 @@ spec:
         - name: azure-config-file
           secret:
             secretName: {{.Values.configSecretName}}
-        {{- if .Values.includeOldDnsZone }}
-        - name: azure-config-file-old
-          secret:
-            secretName: {{.Values.oldZone.configSecretName}}
-        {{- end }}
