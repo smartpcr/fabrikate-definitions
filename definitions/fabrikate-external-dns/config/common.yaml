@@ -1,4 +1,9 @@
 config:
+  name: external-dns
+  configSecretName: external-dns-config-file
+  txtOwnerId: sacedev-westus2
+  dnsZoneResourceGroup: sace-dev-rg
+  domainFilter: sace.works
   installIstioServices: false # Setup VirtualServices to work with Istio
 namespace: dns
 injectNamespace: true # Namespace all templates

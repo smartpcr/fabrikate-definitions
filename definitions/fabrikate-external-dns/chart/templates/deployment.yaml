@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: external-dns
+  name: {{.Values.name}}
   namespace: {{.Release.Namespace}}
 spec:
   strategy:
@@ -9,7 +9,7 @@ spec:
   template:
     metadata:
       labels:
-        app: external-dns
+        app: {{.Values.name}}
     spec:
       serviceAccountName: external-dns
       containers:
@@ -25,10 +25,10 @@ spec:
           args:
             - --source=service
             - --source=ingress
-            - --domain-filter={{.Values.dns.domain}}
+            - --domain-filter={{.Values.domainFilter}}
             - --provider=azure
-            - --azure-resource-group={{.Values.dns.resourceGroup}}
-            - --txt-owner-id={{.Values.aks.clusterName}}-{{.Values.aks.location}}
+            - --azure-resource-group={{.Values.dnsZoneResourceGroup}}
+            - --txt-owner-id={{.Values.txtOwnerId}}
             - --log-level=debug
             - --policy=sync
           volumeMounts:
@@ -42,4 +42,4 @@ spec:
       volumes:
         - name: azure-config-file
           secret:
-            secretName: external-dns-config-file
+            secretName: {{.Values.configSecretName}}
