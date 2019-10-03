@@ -4,6 +4,13 @@ config:
   txtOwnerId: sacedev-westus2
   dnsZoneResourceGroup: sace-dev-rg
   domainFilter: sace.works
+  useAdditionalDnsZone: false
+  additionalZone:
+    name: external-dns-old
+    configSecretName: external-dns-old-config-file
+    txtOwnerId: onees-int-disco-east-us
+    dnsZoneResourceGroup: dev.avalanch.es
+    domainFilter: dev.avalanch.es
   installIstioServices: false # Setup VirtualServices to work with Istio
 namespace: dns
 injectNamespace: true # Namespace all templates

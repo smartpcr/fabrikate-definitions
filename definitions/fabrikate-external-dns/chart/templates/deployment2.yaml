@@ -1,0 +1,46 @@
+{{-if .Values.useAdditionalDnsZone }}
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{.Values.additionalZone.name}}
+  namespace: {{.Release.Namespace}}
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{.Values.additionalZone.name}}
+    spec:
+      serviceAccountName: external-dns
+      containers:
+        - name: {{.Values.additionalZone.name}}
+          image: "{{.Values.acr.name}}.azurecr.io/{{.Values.image.name}}:{{.Values.image.tag}}"
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "25Mi"
+            limits:
+              cpu: "100m"
+              memory: "100Mi"
+          args:
+            - --source=service
+            - --source=ingress
+            - --domain-filter={{.Values.additionalZone.domainFilter}}
+            - --provider=azure
+            - --azure-resource-group={{.Values.additionalZone.dnsZoneResourceGroup}}
+            - --txt-owner-id={{.Values.additionalZone.txtOwnerId}}
+            - --log-level=debug
+            - --policy=sync
+          volumeMounts:
+          - name: azure-config-file-2
+            mountPath: /etc/kubernetes
+            readOnly: true
+      imagePullSecrets:
+        - name: {{.Values.imagePullSecrets}}
+
+      volumes:
+        - name: azure-config-file-2
+          secret:
+            secretName: {{.Values.additionalZone.configSecretName}}
+{{- end }}
