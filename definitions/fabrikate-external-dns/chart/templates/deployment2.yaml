@@ -13,7 +13,7 @@ spec:
     spec:
       serviceAccountName: external-dns
       containers:
-        {{-if .Values.useAdditionalDnsZone }}
+        {{- if .Values.useAdditionalDnsZone }}
         - name: {{.Values.additionalZone.name}}
           image: "{{.Values.acr.name}}.azurecr.io/{{.Values.image.name}}:{{.Values.image.tag}}"
           resources:
@@ -41,7 +41,7 @@ spec:
         - name: {{.Values.imagePullSecrets}}
 
       volumes:
-        {{-if .Values.useAdditionalDnsZone }}
+        {{- if .Values.useAdditionalDnsZone }}
         - name: azure-config-file-2
           secret:
             secretName: {{.Values.additionalZone.configSecretName}}
