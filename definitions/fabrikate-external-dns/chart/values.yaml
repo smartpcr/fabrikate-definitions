@@ -7,6 +7,13 @@ dns:
   image:
     name: "external-dns"
     tag: 720306
+  useAdditionalDnsZone: false
+  additionalZone:
+    name: external-dns-old
+    configSecretName: external-dns-old-config-file
+    txtOwnerId: onees-int-disco-east-us
+    dnsZoneResourceGroup: dev.avalanch.es
+    domainFilter: dev.avalanch.es
 aks:
   clusterName: sace-bedrock-lab
   location: westus2
