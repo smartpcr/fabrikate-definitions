@@ -11,10 +11,3 @@ aks:
   clusterName: sace-bedrock-lab
   location: westus2
 imagePullSecrets: acr-auth
-useAdditionalDnsZone: false
-additionalZone:
-  name: external-dns-old
-  configSecretName: external-dns-old-config-file
-  txtOwnerId: onees-int-disco-east-us
-  dnsZoneResourceGroup: dev.avalanch.es
-  domainFilter: dev.avalanch.es
