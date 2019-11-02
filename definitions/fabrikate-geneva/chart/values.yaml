@@ -31,11 +31,6 @@ geneva:
     image:
       name: geneva/linux-geneva-agent/metrics-telegraf
       tag: "577701"
-  secretBroker:
-    image:
-      name: "secret-broker"
-      tag: "394719"
-      cert: "ssl-aks-default-certificate"
   mdm:
     image:
       name: geneva/genevamdm
