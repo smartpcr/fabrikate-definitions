@@ -35,7 +35,6 @@ spec:
           - name: azure-config-file
             mountPath: /etc/kubernetes
             readOnly: true
-
       imagePullSecrets:
         - name: {{.Values.imagePullSecrets}}
 
