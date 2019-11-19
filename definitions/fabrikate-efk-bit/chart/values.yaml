@@ -1,0 +1,27 @@
+efk:
+  elasticsearch:
+    image:
+      name: docker.elastic.co/elasticsearch/elasticsearch
+      tag: 7.2.0
+    resources:
+      limits:
+        cpu: 1000m
+      requests:
+        cpu: 100m
+    javaOps: "-Xms512m -Xmx512m"
+    data:
+      diskQuota: 10Gi
+  fluentbit:
+    image:
+      name: fluent/fluent-bit
+      tag: 1.2.1
+  kibana:
+    image:
+      name: docker.elastic.co/kibana/kibana
+      tag: 7.2.0
+    resources:
+      limits:
+        memory: "1000Mi"
+        cpu: "1000m"
+      requests:
+        cpu: 100m

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana
+  namespace: {{.Release.Namespace}}
+  labels:
+    app: kinbana
+spec:
+  selector:
+    matchLabels:
+      app: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+        - name: kibana
+          image: "{{.Values.efk.kibana.image.name}}:{{.Values.efk.kibana.image.tag}}"
+          resources:
+            limits:
+              memory: "{{.Values.efk.kibana.resources.limits.memory}}"
+              cpu: "{{.Values.efk.kibana.resources.limits.cpu}}"
+            requests:
+              cpu: "{{.Values.efk.kibana.resources.requests.cpu}}"
+          env:
+            - name: ELASTICSEARCH_URL
+              value: http://elasticsearch:9200
+          ports:
+            - containerPort: 5601

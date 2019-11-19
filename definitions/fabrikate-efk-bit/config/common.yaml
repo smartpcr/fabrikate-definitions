@@ -1,0 +1,10 @@
+config:
+  installIstioServices: false # Setup VirtualServices to work with Istio
+  global:
+    envName: dev
+    spaceName: dev1
+  dns:
+    domain: dev.space.microsoft.com
+    sslCert: sslcert-dev-space-microsoft-com
+namespace: logging
+injectNamespace: true

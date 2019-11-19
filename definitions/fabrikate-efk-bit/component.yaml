@@ -1,0 +1,8 @@
+name: "fabrikate-efk-bit"
+type: helm
+path: "./chart"
+hooks:
+  before-install:
+    - echo 'installing efk bit'
+  after-install:
+    - echo 'installed efk bit'
