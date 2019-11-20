@@ -10,6 +10,6 @@ spec:
     app: kibana
   ports:
     - name: http
-      port: 80
-      targetPort: 4180
+      port: 443
+      targetPort: 5601
       protocol: TCP
