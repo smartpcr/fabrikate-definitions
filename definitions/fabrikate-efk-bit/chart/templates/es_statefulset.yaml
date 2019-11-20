@@ -64,6 +64,7 @@ spec:
           app: elasticsearch
       spec:
         accessModes: ["ReadWriteOnce"]
+        storageClassName: elasticsearch-premium
         resources:
           requests:
             storage: {{.Values.efk.elasticsearch.data.diskQuota}}
