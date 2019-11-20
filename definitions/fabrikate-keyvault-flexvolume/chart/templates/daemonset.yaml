@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: flexvol-driver-installer
-        image: "mcr.microsoft.com/k8s/flexvolume/keyvault-flexvolume:v0.0.13"
+        image: "{{.Values.flexvol.image.name}}:{{.Values.flexvol.image.tag}}"
         imagePullPolicy: Always
         resources:
           requests:
