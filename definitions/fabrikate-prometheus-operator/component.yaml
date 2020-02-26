@@ -12,4 +12,4 @@ subcomponents:
     source: "https://github.com/helm/charts"
     method: "git"
     path: "stable/prometheus-operator"
-    version: "f4743a18769c5405413e1d6cd897bd9c877ce1b1"
+    version: "faa7218217e328a53f0a709c53f2f81b50b2d039"
