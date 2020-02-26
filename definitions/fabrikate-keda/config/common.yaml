@@ -1,0 +1,5 @@
+config:
+subcomponents:
+  keda:
+    namespace: events
+    injectNamespace: true
