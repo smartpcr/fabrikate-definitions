@@ -1,0 +1,32 @@
+namespace: influxdb
+injectNamespace: true
+config:
+  image:
+    repository: influxdb
+    tag: "1.7.9-alpine"
+  persistence:
+    enabled: true
+    size: 8Gi
+    accessMode: ReadWriteOnce
+  enterprise:
+    enabled: false
+  setDefaultUser:
+    enabled: true
+    user:
+      username: "admin"
+      existingSecret: "influxdb-auth"
+  resources:
+    request:
+      memory: 256Mi
+      cpu: 0.1
+    limits:
+      memory: 4Gi
+      cpu: 2
+  ingress:
+    enabled: true
+    tls: true
+    secretName: sslcert-aks-run
+    hostname: influxdb.aks.run
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      # kubernetes.io/tls-acme: "true"
