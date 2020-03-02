@@ -1,0 +1,11 @@
+name: "fabrikate-postgres-operator"
+generator: "static"
+type: "static"
+path: "./manifests"
+subcomponents:
+  - name: "postgres-operator"
+    type: helm
+    path: "./charts/postgres-operator"
+  - name: "postgres-operator-ui"
+    type: helm
+    path: "./charts/postgres-operator-ui"

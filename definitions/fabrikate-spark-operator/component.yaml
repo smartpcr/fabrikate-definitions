@@ -4,3 +4,8 @@ type: helm # Replaces `generator` in fabrikate v1.0.0
 source: "http://storage.googleapis.com/kubernetes-charts-incubator"
 method: "git"
 path: "incubator/sparkoperator"
+subcomponents:
+  - name: "static"
+    generator: static # Deprecated in fabrikate v1.0.0
+    type: static # Replaces `generator` in fabrikate v1.0.0
+    path: "./manifests"

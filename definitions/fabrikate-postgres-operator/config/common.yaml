@@ -1,0 +1,47 @@
+namespace: postgres
+injectNamespace: true # Namespace all templates
+config:
+subcomponents:
+  postgres-operator:
+    config:
+      image:
+        registry: registry.opensource.zalan.do
+        repository: acid/postgres-operator
+        tag: v1.4.0
+      configGeneral:
+        workers: "4"
+      configUsers:
+        replication_username: standby
+        super_username: postgres
+      configKubernetes:
+        cluster_domain: postgres.local
+        cluster_name_label: postgres-cluster
+      configPostgresPodResources:
+        default_cpu_limit: "1"
+        default_cpu_request: 100m
+        default_memory_limit: 500Mi
+        default_memory_request: 100Mi
+        min_cpu_limit: 250m
+        min_memory_limit: 250Mi
+      configLoadBalancer:
+        db_hosted_zone: postgres.aks.run
+      resources:
+        limits:
+          cpu: 500m
+          memory: 500Mi
+        requests:
+          cpu: 100m
+          memory: 250Mi
+  postgres-operator-ui:
+    config:
+      image:
+        registry: registry.opensource.zalan.do
+        repository: acid/postgres-operator-ui
+        tag: v1.4.0
+      resources:
+        limits:
+          cpu: 300m
+          memory: 3000Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
