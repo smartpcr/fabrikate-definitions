@@ -1,0 +1,12 @@
+namespace: spark-operator
+injectNamespace: true
+config:
+  sparkJobNamespace: default
+  operatorVersion: v1beta2-2.4.5
+  replicas: 1
+  enableWebhook: false
+  enableMetrics: true
+  logLevel: 2
+  metricsPort: 10254
+  metricsEndpoint: "/metrics"
+  resyncInterval: 30
