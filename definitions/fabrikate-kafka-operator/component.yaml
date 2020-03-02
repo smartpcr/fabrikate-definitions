@@ -7,11 +7,21 @@ subcomponents:
     path: "strimzi-kafka-operator"
     method: "helm"
     source: "http://strimzi.io/charts/"
+    hooks:
+      before-install:
+        - echo 'installing strimzi charts'
+        - helm repo add strimzi http://strimzi.io/charts
+        - helm repo update
   - name: "confluent-schema-registry"
     type: "helm"
     source: "https://kubernetes-charts-incubator.storage.googleapis.com/"
     method: "helm"
-    path: "schema-registry"
+    path: "incubator/schema-registry"
+    hooks:
+      before-install:
+        - echo 'installing incubator charts'
+        - helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com
+        - helm repo update
   - name: "kafka-cluster"
     type: "helm"
     source: ""
