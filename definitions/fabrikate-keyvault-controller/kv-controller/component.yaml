@@ -7,5 +7,6 @@ version: "0.1.21"
 hooks:
   before-install:
     - echo 'installing spy-charts'
+    - helm repo update
   after-install:
     - echo 'installed kv-controller'

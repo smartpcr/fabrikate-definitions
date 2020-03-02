@@ -10,6 +10,7 @@ subcomponents:
     hooks:
       before-install:
         - echo 'installing strimzi charts'
+        - helm repo update
   - name: "confluent-schema-registry"
     type: "helm"
     source: "https://kubernetes-charts-incubator.storage.googleapis.com/"
@@ -18,6 +19,7 @@ subcomponents:
     hooks:
       before-install:
         - echo 'installing incubator charts'
+        - helm repo update
   - name: "kafka-cluster"
     type: "helm"
     source: ""
