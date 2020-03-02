@@ -7,7 +7,7 @@ version: "1.2.0"
 hooks:
   before-install:
     - echo 'installing keda'
-    - helm repo add kedacore https://kedacore.github.io/charts > /dev/null 2>&1
+    - "[ -z \"$(helm repo list | grep kedacore)\" ] && helm repo add kedacore https://kedacore.github.io/charts"
     - helm repo update
   after-install:
     - echo 'installed keda'
