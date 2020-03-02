@@ -6,6 +6,8 @@ path: "azure-key-vault-env-injector"
 version: "0.1.3"
 hooks:
   before-install:
-    - echo 'installing env-injector'
+    - echo 'installing spy-charts'
+    - "[ -z \"$(helm repo list | grep spy-charts)\" ] && helm repo add spy-charts http://charts.spvapi.no"
+    - helm repo update
   after-install:
     - echo 'installed env-injector'

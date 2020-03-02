@@ -6,6 +6,8 @@ path: "azure-key-vault-controller"
 version: "0.1.21"
 hooks:
   before-install:
-    - echo 'installing kv-controller'
+    - echo 'installing spy-charts'
+    - "[ -z \"$(helm repo list | grep spy-charts)\" ] && helm repo add spy-charts http://charts.spvapi.no"
+    - helm repo update
   after-install:
     - echo 'installed kv-controller'
