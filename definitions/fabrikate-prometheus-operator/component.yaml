@@ -13,3 +13,6 @@ subcomponents:
     method: "git"
     path: "stable/prometheus-operator"
     version: "faa7218217e328a53f0a709c53f2f81b50b2d039"
+  - name: "fabrikate-prometheus-operator"
+    type: static
+    path: "./dashboard"
