@@ -1,12 +1,8 @@
 name: "env-injector"
 type: helm
-source: "http://charts.spvapi.no"
-method: "helm"
-path: "azure-key-vault-env-injector"
-version: "0.1.3"
+path: "./charts"
 hooks:
   before-install:
     - echo 'installing spy-charts'
-    - helm repo update
   after-install:
     - echo 'installed env-injector'

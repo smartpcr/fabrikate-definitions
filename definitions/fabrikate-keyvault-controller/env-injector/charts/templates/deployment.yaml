@@ -1,0 +1,106 @@
+{{- $dot := . }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "azure-key-vault-to-kubernetes.fullname" . }}
+  labels:
+    app: {{ template "azure-key-vault-to-kubernetes.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: webhook
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "azure-key-vault-to-kubernetes.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "azure-key-vault-to-kubernetes.name" . }}
+        release: {{ .Release.Name }}
+        {{- if .Values.customAuth.enabled }}
+          {{- if and .Values.customAuth.autoInject.enabled .Values.customAuth.autoInject.podIdentitySelector }}
+        aadpodidbinding: {{ .Values.customAuth.autoInject.podIdentitySelector }}
+          {{- end}}
+        {{- end}}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/apiservice.yaml") . | sha256sum }}
+    spec:
+      serviceAccountName: {{ template "azure-key-vault-to-kubernetes.fullname" . }}
+      volumes:
+      - name: serving-cert
+        secret:
+          defaultMode: 420
+          secretName: {{ template "azure-key-vault-to-kubernetes.fullname" . }}
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+          type: File
+      - name: azureconf
+        hostPath:
+          path: /etc/kubernetes/azure.json
+          type: File
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+          - name: TLS_CERT_FILE
+            value: /var/serving-cert/servingCert
+          - name: TLS_PRIVATE_KEY_FILE
+            value: /var/serving-cert/servingKey
+          - name: AZUREKEYVAULT_ENV_IMAGE
+            value: {{ .Values.envImage.repository }}:{{ .Values.envImage.tag }}
+          - name: AAD_POD_BINDING_LABEL
+            valueFrom:
+              fieldRef:
+                fieldPath:  metadata.labels['aadpodidbinding']
+          {{- if .Values.customAuth.enabled }}
+          - name: CUSTOM_AUTH
+            value: {{ .Values.customAuth.enabled | quote }}
+            {{- if .Values.customAuth.autoInject.enabled }}
+          - name: CUSTOM_AUTH_INJECT
+            value: {{ .Values.customAuth.autoInject.enabled | quote }}
+            {{- end}}
+            {{- if .Values.customAuth.autoInject.secretName }}
+          - name: CUSTOM_AUTH_INJECT_SECRET_NAME
+            value: {{ .Values.customAuth.autoInject.secretName | quote }}
+            {{- end}}
+          {{- end}}
+          - name: DEBUG
+            value: {{ .Values.debug | quote }}
+          {{- range $key, $value := .Values.env }}
+          - name: {{ $key }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "azure-key-vault-to-kubernetes.fullname" $dot }}-env
+                key: {{ $key }}
+          {{- end }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+          - containerPort: {{ .Values.service.internalPort }}
+          volumeMounts:
+          - mountPath: /var/serving-cert
+            name: serving-cert
+          - mountPath: /var/run/docker.sock
+            name: dockersock
+            readOnly: true
+          - mountPath: /etc/kubernetes/azure.json
+            name: azureconf
+            readOnly: true
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+    {{- end }}
+  {{- if .Values.tolerations }}
+      tolerations:
+{{ toYaml .Values.tolerations | indent 8 }}
+  {{- end }}
+  {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 8 }}
+  {{- end }}

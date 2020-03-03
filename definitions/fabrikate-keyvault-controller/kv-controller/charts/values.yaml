@@ -1,0 +1,15 @@
+azure-key-vault-crd:
+  global: {}
+cloudConfig: /etc/kubernetes/azure.json
+image:
+  repository: spvest/azure-keyvault-controller
+  tag: 0.1.15
+installCrd: true
+keyVault:
+  customAuth:
+    enabled: false
+  polling:
+    failureAttempts: 5
+    failureInterval: 10m
+    normalInterval: 1m
+logLevel: info

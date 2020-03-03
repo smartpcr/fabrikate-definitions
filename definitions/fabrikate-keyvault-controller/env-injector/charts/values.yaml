@@ -1,0 +1,38 @@
+affinity: {}
+azure-key-vault-crd:
+  global: {}
+customAuth:
+  autoInject:
+    enabled: false
+  enabled: false
+debug: false
+envImage:
+  repository: spvest/azure-keyvault-env
+  tag: 0.1.15
+image:
+  pullPolicy: IfNotPresent
+  repository: spvest/azure-keyvault-webhook
+  tag: 0.1.15
+installCrd: true
+nodeSelector: {}
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+replicaCount: 2
+resources: {}
+service:
+  externalPort: 443
+  internalPort: 443
+  name: azure-keyvault-secrets-webhook
+  type: ClusterIP
+tolerations: []
+webhook:
+  failurePolicy: Ignore
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    matchLabels:
+      azure-key-vault-env-injection: enabled

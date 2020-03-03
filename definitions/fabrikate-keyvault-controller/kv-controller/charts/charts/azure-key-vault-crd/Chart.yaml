@@ -1,0 +1,9 @@
+apiVersion: v1
+appVersion: 0.1.1
+description: A Helm sub-chart for use with Azure Key Vault Controller and Azure Key
+  Vault Env Injector that deploys a Kubernetes Custom Resource Definition.
+maintainers:
+- email: jon.torresdal@spv.no
+  name: Sparebanken Vest
+name: azure-key-vault-crd
+version: 0.1.1

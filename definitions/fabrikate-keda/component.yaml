@@ -1,12 +1,8 @@
 name: "keda"
 type: helm
-source: "https://kedacore.github.io/charts"
-method: "helm"
-path: "kedacore/keda"
-version: "1.2.0"
+path: "./charts"
 hooks:
   before-install:
     - echo 'installing keda'
-    - helm repo update
   after-install:
     - echo 'installed keda'

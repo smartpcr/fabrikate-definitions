@@ -1,12 +1,8 @@
 name: "kv-controller"
 type: helm
-source: "http://charts.spvapi.no"
-method: "helm"
-path: "azure-key-vault-controller"
-version: "0.1.21"
+path: "./charts"
 hooks:
   before-install:
     - echo 'installing spy-charts'
-    - helm repo update
   after-install:
     - echo 'installed kv-controller'
