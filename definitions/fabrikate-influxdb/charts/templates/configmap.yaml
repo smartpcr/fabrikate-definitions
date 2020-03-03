@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "influxdb.labels" . | nindent 4 }}
 data:
-  influxdb.conf: |
+  influxdb.conf: |+
     reporting-disabled = {{ .Values.config.reporting_disabled | default false }}
     bind-address = ":{{ .Values.config.rpc.bind_address | default 8088 }}"
 
