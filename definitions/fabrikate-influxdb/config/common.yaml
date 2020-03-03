@@ -16,7 +16,7 @@ config:
       username: "admin"
       existingSecret: "influxdb-auth"
   resources:
-    request:
+    requests:
       memory: 256Mi
       cpu: 0.1
     limits:
@@ -27,6 +27,3 @@ config:
     tls: true
     secretName: sslcert-aks-run
     hostname: influxdb.aks.run
-    annotations:
-      - kubernetes.io/ingress.class: "nginx"
-      # - kubernetes.io/tls-acme: "true"
