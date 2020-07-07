@@ -12,8 +12,6 @@ geneva:
   tenant: intdiscoeastusonees
   environment: DiagnosticsProd
   role: OneesDiscoInt
-  certName: Geneva-Certificate
-  certThumbprintSecret: Geneva-CertificateThumbprint
   k8sSecret: geneva-certificate
   k8sNamespace: default
   secretCert: gcscert.pem
